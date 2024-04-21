@@ -5,18 +5,11 @@ const lyricsRoute = require('./routes/lyricsRoute');
 const dotenv = require("dotenv");
 const userRouter = require("./routes/userRoute");
 const mongoose = require('mongoose');
+const loginRoute = require("./routes/loginRoute");
+const refreshRoute = require("./routes/refreshRoute");
 dotenv.config();
 
 const app = express();
-
-const spotifyWebApi = new SpotifyWebApi({
-  redirectUri: "https://spotless-tunes.vercel.app/",
-  clientId: "860060f6eb7743a2b87dcead95d611c3",
-  clientSecret: "7c78c9585615427aa481ac10ad013dc7",
-});
-
-const loginRoute = require("./routes/loginRoute")(spotifyWebApi);
-const refreshRoute = require("./routes/refreshRoute")(spotifyWebApi);
 
 app.use(express.json());
 app.use(cors());

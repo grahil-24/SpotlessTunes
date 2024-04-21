@@ -37,7 +37,7 @@ const Home = () => {
       setBugDescriptionStatus("warning");
     }else{
       try{
-        const res = await fetch("http://localhost:3001/user/bug-report", {
+        const res = await fetch("https://spotless-tunes.onrender.com/user/bug-report", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"

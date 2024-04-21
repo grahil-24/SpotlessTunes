@@ -4,7 +4,7 @@ const SpotifyWebApi = require("spotify-web-api-node");
 const spotifyApi = new SpotifyWebApi({
   clientId: "860060f6eb7743a2b87dcead95d611c3",
   clientSecret: "7c78c9585615427aa481ac10ad013dc7",
-  redirectUri: "http://localhost:3001/callback",
+  redirectUri: "https://spotless-tunes.onrender.com/callback",
 });
 
 const scopes = [

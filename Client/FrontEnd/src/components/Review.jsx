@@ -17,7 +17,7 @@ function Review() {
   useEffect(() => {
     const getReviews = async() => {
       try{
-        const response= await axios.post("http://localhost:3001/user/get-reviews", {name});
+        const response= await axios.post("https://spotless-tunes.onrender.com/user/get-reviews", {name});
         const {userReviews, otherReviews} = response.data;
         const review = userReviews;
         console.log(review);
@@ -81,13 +81,13 @@ function Review() {
     // Add logic to submit the review and rating
 
     if(!edit){
-      await axios.post("http://localhost:3001/user/add-review", {
+      await axios.post("https://spotless-tunes.onrender.com/user/add-review", {
         review: reviewText,
         rating: rating,
         name: name,
       });
     }else{
-      await axios.post("http://localhost:3001/user/edit-review", {
+      await axios.post("https://spotless-tunes.onrender.com/user/edit-review", {
         review: reviewText,
         rating: rating,
         reviewId: userReview[0]._id,

@@ -11,7 +11,7 @@ export default function useAuth(code) {
   useEffect(() => {
     console.log("hii");
     axios
-      .post("http://localhost:3001/login", {
+      .post("https://spotless-tunes.onrender.com/login", {
         code,
       })
       .then((res) => {
@@ -33,7 +33,7 @@ export default function useAuth(code) {
 
     const interval = setInterval(async () => {
       try {
-        const response = await axios.post("http://localhost:3001/refresh", {
+        const response = await axios.post("https://spotless-tunes.onrender.com/refresh", {
           refreshToken,
         });
         setAccessToken(response.data.accessToken);

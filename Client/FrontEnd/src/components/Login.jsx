@@ -11,34 +11,28 @@ function Login() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if there's a code in the URL
-    const code = new URLSearchParams(window.location.search).get("code");
-    if (code) {
-      // If code is present, exchange it for access token
-      axios
-          .post("https://spotless-tunes.onrender.com/login", { code }
-          ,
-              {
-                headers: {
-                  'Access-Control-Allow-Origin': '*', // Set the origin to allow (or use a specific domain)
-                  'Access-Control-Allow-Methods': 'POST', // Specify the allowed HTTP methods
-                  'Access-Control-Allow-Headers': 'Content-Type', // Specify the allowed headers
-                }
-              })
-          .then((res) => {
-            // Assuming successful response returns accessToken
-            const accessToken = res.data.accessToken;
-            // Save accessToken to localStorage or context
-            localStorage.setItem("accessToken", accessToken);
-            // Redirect to home page or any desired route
-            navigate("/home");
-          })
-          .catch((error) => {
-            console.error("Error exchanging code for access token:", error);
-            // Handle error, e.g., redirect to login page with error message
-            navigate("/?error=authentication_failed");
-          });
-    }
+    const fetchAccessToken = async () => {
+      try {
+        const code = new URLSearchParams(window.location.search).get("code");
+        console.log("Code:", code);
+
+        if (code) {
+          const response = await axios.post("https://spotless-tunes.onrender.com/login", { code });
+          console.log("Response:", response.data);
+
+          const accessToken = response.data.accessToken;
+          console.log("Access Token:", accessToken);
+
+          localStorage.setItem("accessToken", accessToken);
+          navigate("/home");
+        }
+      } catch (error) {
+        console.error("Error exchanging code for access token:", error);
+        navigate("/?error=authentication_failed");
+      }
+    };
+
+    fetchAccessToken();
   }, [navigate]);
 
   return (

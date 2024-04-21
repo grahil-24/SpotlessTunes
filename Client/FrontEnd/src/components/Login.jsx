@@ -18,7 +18,7 @@ function Login() {
         console.log("Code:", code);
 
         if (code) {
-          const response = axios.post(
+          const response = await axios.post(
               "https://spotless-tunes.onrender.com/login",
               {
                 code,
@@ -30,7 +30,7 @@ function Login() {
                   'Access-Control-Allow-Headers': 'Content-Type', // Specify the allowed headers
                 }
               }
-          );
+          )
           console.log("Response:", response.data);
 
           const accessToken = response.data.accessToken;

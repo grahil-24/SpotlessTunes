@@ -10,7 +10,7 @@ function Login() {
         <div className="content-wrapper">
           <div className="container">
             <div className="centered-content">
-              <img src="/Spotless%20Tunes-logo.png"></img>
+              <img src="/images/Spotless%20Tunes-logo.png"></img>
               <p className="wider-paragraph">
                 Introducing our all-in-one Spotify Playlist Manager! Effortlessly
                 declutter your playlists by removing duplicates, while gaining

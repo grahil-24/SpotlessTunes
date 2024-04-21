@@ -10,6 +10,7 @@ export default function   useAuth(code) {
 
   useEffect(() => {
     console.log("hii");
+    console.log(code);
     axios.post(
         "https://spotless-tunes.onrender.com/login",
         {

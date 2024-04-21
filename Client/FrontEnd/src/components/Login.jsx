@@ -1,10 +1,46 @@
 import "../styles/login.css";
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import {useEffect} from "react";
+import axios from "axios";
 
 const AUTH_URL =
-    "https://accounts.spotify.com/authorize?client_id=860060f6eb7743a2b87dcead95d611c3&response_type=code&redirect_uri=https://spotless-tunes.vercel.app/auth&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20playlist-modify-private%20user-top-read";
+    "https://accounts.spotify.com/authorize?client_id=860060f6eb7743a2b87dcead95d611c3&response_type=code&redirect_uri=https://spotless-tunes.vercel.app&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20playlist-modify-private%20user-top-read";
 
 function Login() {
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check if there's a code in the URL
+    const code = new URLSearchParams(window.location.search).get("code");
+    if (code) {
+      // If code is present, exchange it for access token
+      axios
+          .post("https://spotless-tunes.onrender.com/login", { code }
+          ,
+              {
+                headers: {
+                  'Access-Control-Allow-Origin': '*', // Set the origin to allow (or use a specific domain)
+                  'Access-Control-Allow-Methods': 'POST', // Specify the allowed HTTP methods
+                  'Access-Control-Allow-Headers': 'Content-Type', // Specify the allowed headers
+                }
+              })
+          .then((res) => {
+            // Assuming successful response returns accessToken
+            const accessToken = res.data.accessToken;
+            // Save accessToken to localStorage or context
+            localStorage.setItem("accessToken", accessToken);
+            // Redirect to home page or any desired route
+            navigate("/home");
+          })
+          .catch((error) => {
+            console.error("Error exchanging code for access token:", error);
+            // Handle error, e.g., redirect to login page with error message
+            navigate("/?error=authentication_failed");
+          });
+    }
+  }, [navigate]);
+
   return (
       <>
         <div className="content-wrapper">

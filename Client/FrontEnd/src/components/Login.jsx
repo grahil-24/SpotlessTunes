@@ -41,12 +41,12 @@ function Login() {
         }
       } catch (error) {
         console.error("Error exchanging code for access token:", error);
-        navigate("/?error=authentication_failed");
+        // navigate("/?error=authentication_failed");
       }
     };
 
     fetchAccessToken();
-  }, [navigate]);
+  }, []);   //navigate was here before
 
   return (
       <>

@@ -26,7 +26,7 @@ function Login() {
               {
                 headers: {
                   'Access-Control-Allow-Origin': '*', // Set the origin to allow (or use a specific domain)
-                  'Access-Control-Allow-Methods': 'POST', // Specify the allowed HTTP methods
+                  'Access-Control-Allow-Methods': '*', // Specify the allowed HTTP methods
                   'Access-Control-Allow-Headers': 'Content-Type', // Specify the allowed headers
                 }
               }

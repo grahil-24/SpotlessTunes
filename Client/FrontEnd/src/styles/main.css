@@ -1,7 +1,7 @@
 /* General Styles */
 body{
     font-family: 'Circular', sans-serif !important;
-    background-image: url('bg.jpg')!important;
+    background-image: url('/images/bg.jpg')!important;
     background-size: cover !important; /* Preserve aspect ratio and cover the entire container */
     background-repeat: no-repeat !important; /* Prevent the background image from repeating */
     background-position: center !important; ; /* Center the background image */

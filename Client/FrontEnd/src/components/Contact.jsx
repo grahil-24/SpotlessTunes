@@ -5,7 +5,7 @@ function Contact() {
     <div className="contact-container">
       <div className="glassy-card">
         <div className="contact-card">
-          <img src="team_member_1.jpeg" alt="Team Member 1" />
+          <img src="/images/team_member_1.jpeg" alt="Team Member 1" />
           <h2>Rahil Ganatra</h2>
           <p>Backend Developer</p>
           <p>Email: rahilganatra@gmail.com</p>
@@ -33,7 +33,7 @@ function Contact() {
       </div>
       <div className="glassy-card">
         <div className="contact-card">
-          <img src="\team_member_2.jpeg" alt="Team Member 2" />
+          <img src="/images/team_member_2.jpeg" alt="Team Member 2" />
           <h2>Vaidik Pandya</h2>
           <p>Web Developer</p>
           <p>Email: vaidik24pandya@gmail.com</p>

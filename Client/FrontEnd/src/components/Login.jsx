@@ -19,7 +19,7 @@ function Login() {
                 and enjoyment across platforms.
               </p>
               <Link to={AUTH_URL} className="login-button">
-                <img src="/webstorm.png" alt="Spotify Logo" />
+                <img src="/images/webstorm.png" alt="Spotify Logo" />
                 Login with Spotify
               </Link>
             </div>

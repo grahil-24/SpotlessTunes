@@ -13,7 +13,8 @@ function Login() {
   useEffect(() => {
     const fetchAccessToken = async () => {
       try {
-        const code = new URLSearchParams(window.location.search).get("code");
+        let code = new URLSearchParams(window.location.search).get("code");
+        code = code.trim();
         console.log("Code:", code);
 
         if (code) {

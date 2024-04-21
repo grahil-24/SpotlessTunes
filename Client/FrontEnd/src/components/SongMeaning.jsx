@@ -15,7 +15,16 @@ const SongMeaning = () => {
     useEffect(() => {
         const fetchLyricsAndMeaning = async () => {
             try {
-                const response = await fetch(`https://spotless-tunes.onrender.com/lyrics?name=${songName}&artist=${artistName}`);
+                const response = await fetch(
+                    `https://spotless-tunes.onrender.com/lyrics?name=${songName}&artist=${artistName}`,
+                    {
+                        headers: {
+                            'Access-Control-Allow-Origin': '*', // Set the origin to allow (or use a specific domain)
+                            'Access-Control-Allow-Methods': 'GET', // Specify the allowed HTTP methods
+                            'Access-Control-Allow-Headers': 'Content-Type', // Specify the allowed headers
+                        }
+                    }
+                );
                 if (response.ok) {
                     const { lyrics, meaning } = await response.json();
                     setLyrics(lyrics);

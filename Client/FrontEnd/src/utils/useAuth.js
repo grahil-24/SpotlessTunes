@@ -3,17 +3,26 @@ import axios from "axios";
 
 export let access_token = ""
 
-export default function useAuth(code) {
+export default function   useAuth(code) {
   const [accessToken, setAccessToken] = useState();
   const [refreshToken, setRefreshToken] = useState();
   const [expiresIn, setExpiresIn] = useState();
 
   useEffect(() => {
     console.log("hii");
-    axios
-      .post("https://spotless-tunes.onrender.com/login", {
-        code,
-      })
+    axios.post(
+        "https://spotless-tunes.onrender.com/login",
+        {
+          code,
+        },
+        {
+          headers: {
+            'Access-Control-Allow-Origin': '*', // Set the origin to allow (or use a specific domain)
+            'Access-Control-Allow-Methods': 'POST', // Specify the allowed HTTP methods
+            'Access-Control-Allow-Headers': 'Content-Type', // Specify the allowed headers
+          }
+        }
+    )
       .then((res) => {
         console.log("1. " + res.data.accessToken);
         setAccessToken(res.data.accessToken);
@@ -33,9 +42,19 @@ export default function useAuth(code) {
 
     const interval = setInterval(async () => {
       try {
-        const response = await axios.post("https://spotless-tunes.onrender.com/refresh", {
-          refreshToken,
-        });
+        const response = await axios.post(
+            "https://spotless-tunes.onrender.com/refresh",
+            {
+              refreshToken,
+            },
+            {
+              headers: {
+                'Access-Control-Allow-Origin': '*', // Set the origin to allow (or use a specific domain)
+                'Access-Control-Allow-Methods': 'POST', // Specify the allowed HTTP methods
+                'Access-Control-Allow-Headers': 'Content-Type', // Specify the allowed headers
+              }
+            }
+        );
         setAccessToken(response.data.accessToken);
         access_token = response.data.accessToken;
       } catch (err) {

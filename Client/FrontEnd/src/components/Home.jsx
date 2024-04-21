@@ -40,7 +40,10 @@ const Home = () => {
         const res = await fetch("https://spotless-tunes.onrender.com/user/bug-report", {
           method: "POST",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            'Access-Control-Allow-Origin': '*', // Set the origin to allow (or use a specific domain)
+            'Access-Control-Allow-Methods': '*', // Specify the allowed HTTP methods
+            'Access-Control-Allow-Headers': 'Content-Type',
           },
           body: JSON.stringify({
             description: bugDescription,

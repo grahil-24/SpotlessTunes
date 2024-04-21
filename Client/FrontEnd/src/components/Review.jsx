@@ -17,7 +17,16 @@ function Review() {
   useEffect(() => {
     const getReviews = async() => {
       try{
-        const response= await axios.post("https://spotless-tunes.onrender.com/user/get-reviews", {name});
+        const response= await axios.post("https://spotless-tunes.onrender.com/user/get-reviews",
+            {name},
+            {
+                headers: {
+                  'Access-Control-Allow-Origin': '*', // Set the origin to allow (or use a specific domain)
+                  'Access-Control-Allow-Methods': 'POST', // Specify the allowed HTTP methods
+                  'Access-Control-Allow-Headers': 'Content-Type', // Specify the allowed headers
+                }
+              }
+            );
         const {userReviews, otherReviews} = response.data;
         const review = userReviews;
         console.log(review);
@@ -85,13 +94,27 @@ function Review() {
         review: reviewText,
         rating: rating,
         name: name,
-      });
+      },
+          {
+            headers: {
+              'Access-Control-Allow-Origin': '*', // Set the origin to allow (or use a specific domain)
+              'Access-Control-Allow-Methods': 'POST', // Specify the allowed HTTP methods
+              'Access-Control-Allow-Headers': 'Content-Type', // Specify the allowed headers
+            }
+          });
     }else{
       await axios.post("https://spotless-tunes.onrender.com/user/edit-review", {
         review: reviewText,
         rating: rating,
         reviewId: userReview[0]._id,
-      });
+      },
+          {
+            headers: {
+              'Access-Control-Allow-Origin': '*', // Set the origin to allow (or use a specific domain)
+              'Access-Control-Allow-Methods': 'POST', // Specify the allowed HTTP methods
+              'Access-Control-Allow-Headers': 'Content-Type', // Specify the allowed headers
+            }
+          });
       setReviewEdited(true);
       setEdit(false);
     }

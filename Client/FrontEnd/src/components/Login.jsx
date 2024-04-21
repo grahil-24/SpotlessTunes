@@ -37,6 +37,7 @@ function Login() {
           console.log("Access Token:", accessToken);
 
           localStorage.setItem("accessToken", accessToken);
+          window.history.replaceState({}, document.title, window.location.pathname); // Clear the code parameter from the URL
           navigate("/home");
         }
       } catch (error) {

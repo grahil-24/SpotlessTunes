@@ -66,7 +66,7 @@ const Home = () => {
 
   const bugWarningComponent = () => {
     return (
-        <Alert status='warning' maxW={"80%"} maxH={"15"} marginBottom={3} borderRadius={2}>
+         <Alert status='warning' maxW={"80%"} maxH={"15"} marginBottom={3} borderRadius={2}>
           <AlertIcon />
           <AlertDescription>Please enter a valid description</AlertDescription>
         </Alert>

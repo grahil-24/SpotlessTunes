@@ -22,7 +22,7 @@ function RemoveDuplicates() {
     fetchPlaylists();
   }, [accessToken]);
 
-  const getDuplicates = async (playlistId) => {
+   const getDuplicates = async (playlistId) => {
     if (!accessToken || loadingPlaylistIds.includes(playlistId)) return;
 
     setLoadingPlaylistIds((prevLoadingIds) => [...prevLoadingIds, playlistId]);

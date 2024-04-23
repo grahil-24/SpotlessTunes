@@ -29,26 +29,19 @@ function App() {
 
   return (
       <>
-        <Router>
+         <Router>
              <NavBar />
             <Routes>
               <Route path="/" element={<Login />} />
-              <Route
-                  path="/home"
-                  element={
-                    <ChakraProvider>
-                      <Home />
-                    </ChakraProvider>
-                  }
-              />
-              <Route path="/remove-duplicates" element={<RemoveDuplicates />} />
+                <ProtectedRoute path="/home" element={<Home />} />
+                <ProtectedRoute path="/remove-duplicates" element={<RemoveDuplicates />} />
               <Route path="/auth" element={<AuthCodeHandler />} />
-              <Route path="/stats" element={<Statistics />} />
+                <ProtectedRoute path="/stats" element={<Statistics />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/search-songs" element={<SearchSongs />} />
-              <Route path="/get-meaning" element={<SongMeaning />} />
-              <Route path="/review" element={<Review />} />
+                <ProtectedRoute path="/search-songs" element={<SearchSongs />} />
+                <ProtectedRoute path="/get-meaning" element={<SongMeaning />} />
+                <ProtectedRoute path="/review" element={<Review />} />
             </Routes>
         </Router>
       </>

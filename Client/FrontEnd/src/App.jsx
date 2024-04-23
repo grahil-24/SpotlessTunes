@@ -14,18 +14,6 @@ import {ChakraProvider} from "@chakra-ui/react";
 function App() {
 
 
-    // const ProtectedRoute = ({element=Element, path=}) => {
-    //     // Check if accessToken is present in localStorage
-    //     const accessToken = localStorage.getItem('accessToken');
-    //
-    //     // If accessToken is not present, redirect to login page
-    //     if (!accessToken) {
-    //         return <Navigate to="/" replace />;
-    //     }
-    //
-    //     // Render the route with the provided element
-    //     return <Route element={<Element />} />;
-    // };
 
   return (
       <>

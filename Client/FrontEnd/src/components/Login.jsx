@@ -47,7 +47,7 @@ function Login() {
     };
 
     fetchAccessToken();
-  }, []);   //navigate was here before
+  });   //navigate was here before
 
   return (
       <>

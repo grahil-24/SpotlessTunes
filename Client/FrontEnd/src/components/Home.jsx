@@ -84,7 +84,6 @@ const Home = () => {
 
 
   return (
-    <ChakraProvider>
       <div className="home-container">
         <div className="home-cards">
           <div className="home-card">
@@ -177,7 +176,7 @@ const Home = () => {
           Report Bug
         </Button>
       </div>
-    </ChakraProvider>
+    
   );
 };
 

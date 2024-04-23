@@ -118,9 +118,9 @@
     </configuration>
     <list>
       <item itemvalue="Node.js.SpotifyService.js" />
-      <item itemvalue="npm.app" />
       <item itemvalue="npm.devStart" />
       <item itemvalue="npm.dev" />
+      <item itemvalue="npm.app" />
     </list>
     <recent_temporary>
       <list>
@@ -204,46 +204,7 @@
       <workItem from="1713702335103" duration="1248000" />
       <workItem from="1713874762150" duration="4078000" />
       <workItem from="1713881656322" duration="2150000" />
-    </task>
-    <task id="LOCAL-00039" summary="installed genai, genius api, chakraui and other packages in both front and backend">
-      <option name="closed" value="true" />
-      <created>1712987552732</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1712987552732</updated>
-    </task>
-    <task id="LOCAL-00040" summary="slight updates to list items">
-      <option name="closed" value="true" />
-      <created>1712987626794</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1712987626794</updated>
-    </task>
-    <task id="LOCAL-00041" summary="dynamic header using state">
-      <option name="closed" value="true" />
-      <created>1712987679485</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1712987679485</updated>
-    </task>
-    <task id="LOCAL-00042" summary="added song search functionality">
-      <option name="closed" value="true" />
-      <created>1712987714142</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1712987714142</updated>
-    </task>
-    <task id="LOCAL-00043" summary="refactored routes and added routes to fetch lyrics and meaning. Also integrated dotenv">
-      <option name="closed" value="true" />
-      <created>1712987774400</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1712987774400</updated>
+      <workItem from="1713885165259" duration="303000" />
     </task>
     <task id="LOCAL-00044" summary="nothing imp. code cleanup">
       <option name="closed" value="true" />
@@ -597,7 +558,47 @@
       <option name="project" value="LOCAL" />
       <updated>1713883799669</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <task id="LOCAL-00088" summary="nothing imp! code cleanup">
+      <option name="closed" value="true" />
+      <created>1713885354261</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1713885354262</updated>
+    </task>
+    <task id="LOCAL-00089" summary="nothing imp! code cleanup">
+      <option name="closed" value="true" />
+      <created>1713885369505</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1713885369505</updated>
+    </task>
+    <task id="LOCAL-00090" summary="nothing imp! code cleanup">
+      <option name="closed" value="true" />
+      <created>1713885382677</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1713885382677</updated>
+    </task>
+    <task id="LOCAL-00091" summary="nothing imp! code cleanup">
+      <option name="closed" value="true" />
+      <created>1713885452045</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1713885452045</updated>
+    </task>
+    <task id="LOCAL-00092" summary="nothing imp! code cleanup">
+      <option name="closed" value="true" />
+      <created>1713885467814</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1713885467814</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

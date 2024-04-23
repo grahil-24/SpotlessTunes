@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import "../styles/removeduplicates.css";
 import spotifyService from "../utils/SpotifyService.js";
+import { useAccessToken } from "./AccessTokenContext.jsx";
 
 function RemoveDuplicates() {
+  
+ 
   const accessToken = localStorage.getItem("accessToken");
-
+  
   const [playlists, setPlaylists] = useState([]);
   const [loadingPlaylistIds, setLoadingPlaylistIds] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
@@ -22,7 +25,7 @@ function RemoveDuplicates() {
     fetchPlaylists();
   }, [accessToken]);
 
-   const getDuplicates = async (playlistId) => {
+  const getDuplicates = async (playlistId) => {
     if (!accessToken || loadingPlaylistIds.includes(playlistId)) return;
 
     setLoadingPlaylistIds((prevLoadingIds) => [...prevLoadingIds, playlistId]);

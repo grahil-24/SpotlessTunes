@@ -144,7 +144,7 @@ const Home = () => {
         </div>
         <Modal isOpen={isBugReportOpen} onClose={() => setIsBugReportOpen(false)}>
           <ModalOverlay/>
-          <ModalContent style={{backgroundColor: 'black'}}>
+          <ModalContent style={{backgroundColor: '#008080'}}>
             <ModalHeader>Report a Bug</ModalHeader>
             <ModalCloseButton />
             <ModalBody>

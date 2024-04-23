@@ -10,7 +10,6 @@ import Contact from "./components/Contact.jsx";
 import SearchSongs from "./components/SearchSongs.jsx";
 import SongMeaning from "./components/SongMeaning.jsx";
 import Review from "./components/Review.jsx";
-import {ChakraProvider} from "@chakra-ui/react";
 function App() {
 
 
@@ -22,14 +21,7 @@ function App() {
             User
             <Routes>
                 <Route path="/" element={<Login />} />
-                <Route
-                    path="/home"
-                    element={
-                        <ChakraProvider>
-                            <Home />
-                        </ChakraProvider>
-                    }
-                />
+                <Route path="/home" element={<Home />}/>
                 <Route path="/remove-duplicates" element={<RemoveDuplicates />} />
                 <Route path="/auth" element={<AuthCodeHandler />} />
                 <Route path="/stats" element={<Statistics />} />

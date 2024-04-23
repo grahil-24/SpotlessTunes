@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import "../styles/home.css"; // Import CSS file
 import spotifyService from "../utils/SpotifyService.js";
+import {ChakraProvider} from "@chakra-ui/react";
 import {
   Text, Button,  Modal, ModalOverlay, ModalContent, ModalHeader,
   ModalCloseButton,

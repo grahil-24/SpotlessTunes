@@ -14,7 +14,7 @@ function App() {
   // const code = new URLSearchParams(window.location.search).get("code");
   // const accessToken = useAuth(code);
 
-    const ProtectedRoute = ({ element: Element, ...rest }) => {
+    const ProtectedRoute = ({element: Element, ...rest }) => {
         // Check if accessToken is present in localStorage
         const accessToken = localStorage.getItem('accessToken');
 

@@ -12,21 +12,7 @@ import SongMeaning from "./components/SongMeaning.jsx";
 import Review from "./components/Review.jsx";
 import {ChakraProvider} from "@chakra-ui/react";
 function App() {
-  // const code = new URLSearchParams(window.location.search).get("code");
-  // const accessToken = useAuth(code);
 
-    // const ProtectedRoute = ({element=Element, path=}) => {
-    //     // Check if accessToken is present in localStorage
-    //     const accessToken = localStorage.getItem('accessToken');
-    //
-    //     // If accessToken is not present, redirect to login page
-    //     if (!accessToken) {
-    //         return <Navigate to="/" replace />;
-    //     }
-    //
-    //     // Render the route with the provided element
-    //     return <Route element={<Element />} />;
-    // };
 
   return (
       <>

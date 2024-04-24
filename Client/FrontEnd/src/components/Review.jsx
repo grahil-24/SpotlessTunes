@@ -130,7 +130,7 @@ function Review() {
         <Box marginTop={"10%"}>
         <Box className={"review-parent"} width={"30%"} marginLeft={"auto"} marginRight={"auto"} marginTop={"20px"}>
           {userReview === null || edit ? reviewFormComponent():(
-              <Card key={userReview[0]._id} className={"review-card"} padding={"3"} backgroundColor={"rgba(0, 0, 0, 0.1)"}>
+              <Card key={userReview[0]._id} className={"review-card"} padding={"3"} backgroundColor={"rgba(0, 0, 0, 0.7)"}>
                 <Flex alignItems={"center"} justifyContent={"space-between"}>
                   <Text as  = 'b' className={"user"}>{name}</Text>
                   <Rating className="my-rating-class" value={userReview[0].rating} readOnly halfFillMode={'box'}/>

@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import "../styles/review.css";
-import { Rating } from '@smastrom/react-rating'
-import '@smastrom/react-rating/style.css'
-import {Box, Button, Card, ChakraProvider, Flex, Text} from "@chakra-ui/react";
+import { Rating } from "@smastrom/react-rating";
+import {
+  Box,
+  Button,
+  Card,
+  ChakraProvider,
+  Flex,
+  Text,
+} from "@chakra-ui/react";
 
 function Review() {
   const name = localStorage.getItem("user");
@@ -15,67 +20,23 @@ function Review() {
   const [reviewEdited, setReviewEdited] = useState(false);
 
   useEffect(() => {
-    const getReviews = async() => {
-      try{
-        const response= await axios.post("https://spotless-tunes.onrender.com/user/get-reviews",
-            {name},
-            {
-                headers: {
-                  'Access-Control-Allow-Origin': '*', // Set the origin to allow (or use a specific domain)
-                  'Access-Control-Allow-Methods': 'POST', // Specify the allowed HTTP methods
-                  'Access-Control-Allow-Headers': 'Content-Type', // Specify the allowed headers
-                }
-              }
-            );
-        const {userReviews, otherReviews} = response.data;
-        const review = userReviews;
-        console.log(review);
-        console.log(otherReviews);
-        if(review === null || review === undefined){
-          setUserReview(null);
-        }else{
-          setUserReview(review);
-        }
+    const getReviews = async () => {
+      try {
+        const response = await axios.post(
+          "https://spotless-tunes.onrender.com/user/get-reviews",
+          { name }
+        );
+        const { userReviews, otherReviews } = response.data;
+        setUserReview(userReviews);
         setReviews(otherReviews);
-      }catch(err){
+      } catch (err) {
         console.log(err);
       }
-    }
-    if(name){
+    };
+    if (name) {
       getReviews();
     }
-
   }, [name, reviewEdited]);
-
-  const reviewFormComponent = () => {
-    return (
-        <div className="review-container">
-          <h2>Write a Review</h2>
-          <form className="review-form" onSubmit={handleSubmit}>
-            <label>
-              Your Review:
-              <textarea
-                  className="review-textarea"
-                  value={reviewText}
-                  onChange={handleReviewTextChange}
-                  rows={4}
-                  cols={50}
-              />
-            </label>
-            <br/>
-            <label>
-              Your Rating:
-              <Rating className="my-rating-class" value={rating} onChange={setRating} halfFillMode={'box'}/>
-            </label>
-            <br/>
-            <button className="submit-button" type="submit">
-              Submit
-            </button>
-            {edit && <Button onClick={() => {setEdit(false)}}>Cancel</Button>}
-          </form>
-        </div>
-    );
-  }
 
   const handleReviewTextChange = (event) => {
     setReviewText(event.target.value);
@@ -83,78 +44,153 @@ function Review() {
 
   const handleEdit = () => {
     setEdit(true);
-  }
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // Add logic to submit the review and rating
-
-    if(!edit){
-      await axios.post("https://spotless-tunes.onrender.com/user/add-review", {
-        review: reviewText,
-        rating: rating,
-        name: name,
-      },
-          {
-            headers: {
-              'Access-Control-Allow-Origin': '*', // Set the origin to allow (or use a specific domain)
-              'Access-Control-Allow-Methods': 'POST', // Specify the allowed HTTP methods
-              'Access-Control-Allow-Headers': 'Content-Type', // Specify the allowed headers
-            }
-          });
-    }else{
-      await axios.post("https://spotless-tunes.onrender.com/user/edit-review", {
-        review: reviewText,
-        rating: rating,
-        reviewId: userReview[0]._id,
-      },
-          {
-            headers: {
-              'Access-Control-Allow-Origin': '*', // Set the origin to allow (or use a specific domain)
-              'Access-Control-Allow-Methods': 'POST', // Specify the allowed HTTP methods
-              'Access-Control-Allow-Headers': 'Content-Type', // Specify the allowed headers
-            }
-          });
+    const url = edit
+      ? "https://spotless-tunes.onrender.com/user/edit-review"
+      : "https://spotless-tunes.onrender.com/user/add-review";
+    const data = edit
+      ? { review: reviewText, rating, reviewId: userReview[0]._id }
+      : { review: reviewText, rating, name };
+    try {
+      await axios.post(url, data);
       setReviewEdited(true);
       setEdit(false);
+    } catch (error) {
+      console.log(error);
     }
-
     window.location.reload();
-    console.log("Submitting review:", reviewText);
-    console.log("Rating:", rating);
-    // Optionally, you can call a function to submit the review to your backend
   };
 
   return (
-      <ChakraProvider resetCSS={false}>
-        <Box marginTop={"10%"}>
-        <Box className={"review-parent"} width={"30%"} marginLeft={"auto"} marginRight={"auto"} marginTop={"20px"}>
-          {userReview === null || edit ? reviewFormComponent():(
-              <Card key={userReview[0]._id} className={"review-card"} padding={"3"} backgroundColor={"rgba(0, 0, 0, 0.3)"}>
+    <ChakraProvider>
+      <Box
+        width={{ base: "90%", md: "70%", lg: "50%" }} // Adjust width based on screen size
+        marginX={"auto"}
+        marginTop={"20px"}
+      >
+        {!userReview || edit ? (
+          <Card
+            padding={5}
+            backgroundColor={"rgba(0, 0, 0, 0.3)"}
+            borderRadius={8}
+          >
+            <Text
+              fontSize={{ base: "xl", md: "2xl" }}
+              textAlign="center"
+              mb={5}
+            >
+              Write a Review
+            </Text>
+            <form onSubmit={handleSubmit}>
+              <textarea
+                value={reviewText}
+                onChange={handleReviewTextChange}
+                rows={4}
+                placeholder="Write your review here..."
+                className="review-textarea"
+                required
+                style={{ width: "100%", resize: "vertical" }} // Set width to 100% to make it responsive
+              />
+              <br />
+              {/* Adjust the size and orientation of the Rating component */}
+              <Flex justify="center" align="center">
+                <Text marginRight="10px" color="white">
+                  Your Rating:
+                </Text>
+                <Rating
+                  value={rating}
+                  onChange={setRating}
+                  halfFillMode={"box"}
+                  className="my-rating-class"
+                  style={{
+                    fontSize: { base: "16px", md: "20px" },
+                    display: "flex",
+                  }}
+                />
+              </Flex>
+              <br />
+              <Flex justify="center">
+                <Button type="submit" colorScheme="green" mt={3} mr={2}>
+                  Submit
+                </Button>
+                {edit && (
+                  <Button onClick={() => setEdit(false)} mt={3}>
+                    Cancel
+                  </Button>
+                )}
+              </Flex>
+            </form>
+          </Card>
+        ) : (
+          <Card
+            key={userReview[0]._id}
+            padding={5}
+            backgroundColor={"rgba(0, 0, 0, 0.3)"}
+            borderRadius={8}
+          >
+            <Flex alignItems={"center"} justifyContent={"space-between"}>
+              <Text as="b" className={"user"} color={"white"}>
+                {name}
+              </Text>
+              <Rating
+                value={userReview[0].rating}
+                readOnly
+                halfFillMode={"box"}
+              />
+            </Flex>
+            <Text className={"review"} mt={3} color={"white"}>
+              {userReview[0].review}
+            </Text>
+            <Button mt={3} onClick={handleEdit}>
+              Edit
+            </Button>
+          </Card>
+        )}
+      </Box>
+
+      {/* Other reviews */}
+      <Box width={"90%"} marginX={"auto"} marginTop={"10%"}>
+        <Text
+          fontSize={{ base: "xl", md: "2xl" }}
+          textAlign="center"
+          mb={5}
+          color={"white"}
+        >
+          Other Reviews
+        </Text>
+        <Flex flexWrap={"wrap"} justifyContent={"center"}>
+          {reviews &&
+            reviews.map((review) => (
+              <Card
+                key={review._id}
+                width={{ base: "90%", sm: "45%", md: "30%", lg: "20%" }}
+                marginY={3}
+                padding={5}
+                backgroundColor={"rgba(0, 0, 0, 1.0)"}
+                borderRadius={8}
+                margin={2}
+              >
                 <Flex alignItems={"center"} justifyContent={"space-between"}>
-                  <Text as  = 'b' className={"user"}>{name}</Text>
-                  <Rating className="my-rating-class" value={userReview[0].rating} readOnly halfFillMode={'box'}/>
+                  <Text as="b" className={"user"} color={"white"}>
+                    {review._id}
+                  </Text>
+                  <Rating
+                    value={review.reviews[0].rating}
+                    readOnly
+                    halfFillMode={"box"}
+                  />
                 </Flex>
-                <p className={"review"}>{userReview[0].review}</p>
-                <Button width={"30%"} onClick={handleEdit}>Edit</Button>
-              </Card>)}
-        </Box>
-        <Box marginLeft={"auto"} marginRight={"auto"} width={"90%"} className={"other-reviews"} marginTop={"10%"}>
-          <h3>Other Reviews: </h3>
-          <Flex flexDirection={"row"}>
-            {reviews !== null && reviews.map((review) => (
-                <Card key={review._id} className={"review-card"} marginRight={"50px"} padding={"3"} minW={"270px"} backgroundColor={"rgba(0, 0, 0, 1.0)"}>
-                  <Flex alignItems={"center"} justifyContent={"space-between"} >
-                    <Text  as  = 'b' className={"user"}>{review._id}</Text>
-                    <Rating className="my-rating-class" value={review.reviews[0].rating} readOnly halfFillMode={'box'}/>
-                  </Flex>
-                  <p className={"review"}>{review.reviews[0].review}</p>
-                </Card>
+                <Text className={"review"} mt={3} color={"white"}>
+                  {review.reviews[0].review}
+                </Text>
+              </Card>
             ))}
-          </Flex>
-        </Box>
-        </Box>
-      </ChakraProvider>
+        </Flex>
+      </Box>
+    </ChakraProvider>
   );
 }
 

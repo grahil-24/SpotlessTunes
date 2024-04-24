@@ -3,7 +3,7 @@ const SpotifyWebApi = require("spotify-web-api-node");
 const loginRouter = express.Router();
 
 const spotifyWebApi = new SpotifyWebApi({
-    redirectUri: "https://spotless-tunes.vercel.app",
+    redirectUri: "https://localhost:3000",
     clientId: "860060f6eb7743a2b87dcead95d611c3",
     clientSecret: "7c78c9585615427aa481ac10ad013dc7",
 });
